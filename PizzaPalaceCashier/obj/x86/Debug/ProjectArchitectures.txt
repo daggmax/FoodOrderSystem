@@ -1,0 +1,1 @@
+C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\PizzaPalaceCashier.csproj;x86
