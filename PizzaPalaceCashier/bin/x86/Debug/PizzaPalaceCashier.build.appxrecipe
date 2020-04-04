@@ -10,23 +10,26 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>14e4cf50-814f-413a-80ff-131b00919306</PackageIdentityName>
     <PackageIdentityPublisher>CN=maxro</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\maxro\source\repos\PizzaPalaceCashier\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\PizzaPalaceCashier.exe">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\PizzaPalaceCashier.exe">
       <PackagePath>entrypoint\PizzaPalaceCashier.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\maxro\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.9\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -34,55 +37,55 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\PizzaPalaceCashier.xr.xml">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\PizzaPalaceCashier.xr.xml">
       <PackagePath>PizzaPalaceCashier.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\View\CategoryView.xbf">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\View\CategoryView.xbf">
       <PackagePath>View\CategoryView.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\View\StartView.xbf">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\View\StartView.xbf">
       <PackagePath>View\StartView.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceBackend\PizzaPalaceCashier\bin\x86\Debug\Core\PizzaPalaceCashier.exe">
+    <AppxPackagedFile Include="C:\Users\maxro\source\repos\PizzaPalaceCashier\bin\x86\Debug\Core\PizzaPalaceCashier.exe">
       <PackagePath>PizzaPalaceCashier.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

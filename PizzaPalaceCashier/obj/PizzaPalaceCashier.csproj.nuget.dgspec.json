@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxro\\source\\repos\\PizzaPalaceBackend\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj": {}
+    "C:\\Users\\maxro\\source\\repos\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxro\\source\\repos\\PizzaPalaceBackend\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj": {
+    "C:\\Users\\maxro\\source\\repos\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxro\\source\\repos\\PizzaPalaceBackend\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj",
+        "projectUniqueName": "C:\\Users\\maxro\\source\\repos\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj",
         "projectName": "PizzaPalaceCashier",
-        "projectPath": "C:\\Users\\maxro\\source\\repos\\PizzaPalaceBackend\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj",
+        "projectPath": "C:\\Users\\maxro\\source\\repos\\PizzaPalaceCashier\\PizzaPalaceCashier.csproj",
         "packagesPath": "C:\\Users\\maxro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxro\\source\\repos\\PizzaPalaceBackend\\PizzaPalaceCashier\\obj\\",
+        "outputPath": "C:\\Users\\maxro\\source\\repos\\PizzaPalaceCashier\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -42,6 +42,10 @@
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
