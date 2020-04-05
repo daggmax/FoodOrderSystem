@@ -19,13 +19,25 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="ButtonCategory"
-                Content="Handle categories"
-                FontSize="30"
-                Click="ButtonCategory_Click"
+        <Button Content="Categories"
+                FontSize="60"
+                Click="ButtonCategories_Click"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Grid.Row="1"
                 Grid.Column="2"/>
+        <Button Content="Orders"
+                FontSize="60"
+                Click="ButtonOrders_Click"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Grid.Row="1"
+                Grid.Column="1"/>
+        <Button Content="Items"
+                FontSize="60"
+                Click="ButtonItems_Click"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Grid.Row="1"/>
     </Grid>
 </Page>

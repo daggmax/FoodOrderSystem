@@ -28,7 +28,7 @@
         <CommandBar Grid.ColumnSpan="2">
             <AppBarButton Icon="Back" Label="Back" Click="BackButton_Click"/>
             <AppBarSeparator/>
-            <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click" IsEnabled="{x:Bind categoryViewModel.FormCategory.Exists}"/>
+            <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click" IsEnabled="{x:Bind categoryViewModel.FormCategory.Exists, Mode=OneWay}"/>
             <AppBarButton Icon="Save" Label="Save" Click="SaveButton_Click"/>
 
             <CommandBar.Content>
@@ -44,17 +44,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Category">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock x:Name="IDTextBlock" 
-                               Margin="4,4,0,4"
-                               Text="{x:Bind CategoryID}" 
-                               Style="{ThemeResource BodyTextBlockStyle}" 
-                               HorizontalAlignment="Center"/>
                         <TextBlock x:Name="PriceTextBlock" 
                                Text="{x:Bind Name}" 
                                Margin="4,4,0,4"
                                FontSize="12"
                                Foreground="Gray"
-                               HorizontalAlignment="Center"/>
+                               HorizontalAlignment="Left"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

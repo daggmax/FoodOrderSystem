@@ -10,17 +10,26 @@ namespace PizzaPalaceCashier.Model
     public class Category : INotifyPropertyChanged
     {
         private int categoryID = 0;
-        public int CategoryID 
+        public int CategoryID
         {
-            get { return categoryID; } 
-            set { categoryID = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryID))); }
+            get { return this.categoryID; }
+            set {
+                this.categoryID = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryID)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exists)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+            }
         }
 
         private string name = "";
-        public string Name 
-        { 
-            get { return name; } 
-            set { name = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name))); } 
+        public string Name
+        {
+            get { return this.name; }
+            set {
+                this.name = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name))); 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid))); 
+            }
         }
 
         public void SetDefaults()
@@ -29,26 +38,33 @@ namespace PizzaPalaceCashier.Model
             this.Name = "";
         }
 
-        public void CopyFrom(Category category)
+        public Category CopyFrom(Category category)
         {
             this.CategoryID = category.CategoryID;
             this.Name = category.Name;
+            return this;
         }
-
-        public bool Validate()
+        public override string ToString()
         {
-            if (!(this.CategoryID >= 0))
-            {
-                return false;
-            }
-            if (!(this.Name.Length > 0))
-            {
-                return false;
-            }
-            return true;
+            return this.Name;
         }
+        public bool IsValid
+        {
+            get
+            {
+                if (!(this.CategoryID >= 0))
+                {
+                    return false;
+                }
+                if (!(this.Name.Length > 0))
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+        public bool Exists { get { return this.CategoryID > 0; } }
 
-        public bool Exists { get { return CategoryID > 0; } }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
