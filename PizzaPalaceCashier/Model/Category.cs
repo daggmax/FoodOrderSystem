@@ -14,10 +14,10 @@ namespace PizzaPalaceCashier.Model
         {
             get { return this.categoryID; }
             set {
-                this.categoryID = value; 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryID)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exists)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+                this.categoryID = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryID)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exists)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
 
@@ -26,9 +26,9 @@ namespace PizzaPalaceCashier.Model
         {
             get { return this.name; }
             set {
-                this.name = value; 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name))); 
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid))); 
+                this.name = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid))); 
             }
         }
 
