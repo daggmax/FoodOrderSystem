@@ -55,8 +55,7 @@ namespace PizzaPalaceCashier.ViewModel
             var categories = JsonConvert.DeserializeObject<ObservableCollection<Category>>(await response.Content.ReadAsStringAsync());
             for (int i = 0; i < this.Categories.Count; i++)
             {
-                var category = this.Categories[i];
-                if (categories.FirstOrDefault(c => c.CategoryID == category.CategoryID) == null)
+                if (categories.FirstOrDefault(c => c.CategoryID == this.Categories[i].CategoryID) == null)
                 {
                     this.Categories.RemoveAt(i--);
                 }
