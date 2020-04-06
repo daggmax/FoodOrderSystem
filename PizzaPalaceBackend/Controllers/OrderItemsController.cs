@@ -30,16 +30,10 @@ namespace PizzaPalaceBackend.Controllers
 
         // GET: api/OrderItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderItem>> GetOrderItem(int id)
+        public async Task<ActionResult<IEnumerable<OrderItem>>> GetOrderItemsByOrderID(int id)
         {
-            var orderItem = await _context.OrderItem.FindAsync(id);
-
-            if (orderItem == null)
-            {
-                return NotFound();
-            }
-
-            return orderItem;
+            return await _context.OrderItem.Where(b => b.OrderID == id).ToListAsync();
+            
         }
 
         // PUT: api/OrderItems/5

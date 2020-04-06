@@ -25,7 +25,7 @@ namespace PizzaPalaceBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
-            return await _context.Order.ToListAsync();
+            return await _context.Order.Where(o => o.FinishTime == null).ToListAsync();
         }
 
         // GET: api/Orders/5

@@ -8,7 +8,7 @@ namespace PizzaPalaceBackend.Model
     public class Order
     {
         public int OrderID { get; set; }
-        public DateTime OrderTime { get; set; }
-        public DateTime FinishTime { get; set; }
+        public DateTime? OrderTime { get; set; }
+        public DateTime? FinishTime { get; set; }
     }
 }

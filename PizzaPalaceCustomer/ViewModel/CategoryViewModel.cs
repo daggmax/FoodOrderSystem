@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI.Core;
 
-namespace PizzaPalaceCashier.ViewModel
+namespace PizzaPalaceCustomer.ViewModel
 {
     class CategoryViewModel
     {
@@ -22,33 +22,7 @@ namespace PizzaPalaceCashier.ViewModel
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
         public Category FormCategory { get; set; } = new Category();
-
-        public async Task<Category> AddCategory(Category category)
-        {
-            HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(category));
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await this.httpClient.PostAsync(URL + "/" + ControllerName, httpContent);
-            category = JsonConvert.DeserializeObject<Category>(await response.Content.ReadAsStringAsync());
-            this.Categories.Add(category);
-            return category;
-        }
-
-        public async Task UpdateCategory(Category category)
-        {
-            HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(category));
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            await this.httpClient.PutAsync(URL + "/" + ControllerName + "/" + category.CategoryID, httpContent);
-
-            for (int i = 0; i < this.Categories.Count; i++)
-            {
-                if (this.Categories[i].CategoryID == category.CategoryID)
-                {
-                    this.Categories[i] = category;
-                    break;
-                }
-            }
-        }
-
+        
         public async Task FetchCategories()
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);
@@ -68,12 +42,6 @@ namespace PizzaPalaceCashier.ViewModel
                     this.Categories.Add(category);
                 }
             }
-        }
-
-        public async Task DeleteCategory(Category category)
-        {
-            await this.httpClient.DeleteAsync(URL + "/" + ControllerName + "/" + category.CategoryID);
-            this.Categories.Remove(this.Categories.FirstOrDefault(c => c.CategoryID == category.CategoryID));
         }
     }
 }

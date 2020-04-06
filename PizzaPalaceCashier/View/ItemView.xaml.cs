@@ -1,4 +1,4 @@
-﻿using PizzaPalaceCashier.Model;
+﻿using PizzaPalaceClientModelLibrary;
 using PizzaPalaceCashier.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace PizzaPalaceCashier.View
                 {
                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                     {
-                        await this.itemViewModel.FetchItems();
+                        await this.itemViewModel.FetchItems(categoryViewModel.Categories);
                         await this.categoryViewModel.FetchCategories();
                     });
                     Thread.Sleep(2000);

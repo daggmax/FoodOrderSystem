@@ -10,8 +10,8 @@ using PizzaPalaceBackend.Data;
 namespace PizzaPalaceBackend.Migrations
 {
     [DbContext(typeof(PizzaPalaceBackendContext))]
-    [Migration("20200404154358_Initial")]
-    partial class Initial
+    [Migration("20200405231709_Intitial")]
+    partial class Intitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,10 +70,10 @@ namespace PizzaPalaceBackend.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("FinishTime")
+                    b.Property<DateTime?>("FinishTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("OrderTime")
+                    b.Property<DateTime?>("OrderTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("OrderID");

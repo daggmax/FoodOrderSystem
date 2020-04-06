@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PizzaPalaceCashier.Model
+namespace PizzaPalaceClientModelLibrary
 {
     public class Item : INotifyPropertyChanged
     {
@@ -16,9 +16,9 @@ namespace PizzaPalaceCashier.Model
             set
             {
                 this.itemID = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemID)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exists)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemID)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exists)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
         private int itemID;
@@ -28,8 +28,8 @@ namespace PizzaPalaceCashier.Model
             set
             {
                 this.categoryID = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryID)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoryID)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
         private int categoryID;
@@ -39,8 +39,8 @@ namespace PizzaPalaceCashier.Model
             set
             {
                 this.name = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
         private string name;
@@ -50,7 +50,7 @@ namespace PizzaPalaceCashier.Model
             set
             {
                 this.description = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Description)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Description)));
             }
         }
         private string description;
@@ -60,8 +60,8 @@ namespace PizzaPalaceCashier.Model
             set
             {
                 this.price = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
         private float price;
@@ -71,7 +71,7 @@ namespace PizzaPalaceCashier.Model
             set
             {
                 this.imageURL = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageURL)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageURL)));
             }
         }
         private string imageURL;
@@ -99,6 +99,16 @@ namespace PizzaPalaceCashier.Model
                 return true;
             }
         }
+        public Category Category
+        {
+            get { return this.category; }
+            set
+            {
+                this.category = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
+            }
+        }
+        private Category category;
 
         public void SetDefaults()
         {

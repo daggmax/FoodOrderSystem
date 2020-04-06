@@ -68,10 +68,10 @@ namespace PizzaPalaceBackend.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("FinishTime")
+                    b.Property<DateTime?>("FinishTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("OrderTime")
+                    b.Property<DateTime?>("OrderTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("OrderID");

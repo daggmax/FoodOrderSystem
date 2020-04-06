@@ -5,10 +5,85 @@
     xmlns:local="using:PizzaPalaceCashier.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:PizzaPalaceClientModelLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <Border BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"
+                BorderThickness="1"
+                Width="1"
+                Grid.Row="1"
+                HorizontalAlignment="Right"/>
+
+        <CommandBar Grid.ColumnSpan="2">
+            <AppBarButton Icon="Back" Label="Back" Click="BackButton_Click"/>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click"/>
+            <AppBarButton Icon="Accept" Label="Completed" Click="SaveButton_Click"/>
+
+            <CommandBar.Content>
+                <TextBlock Text="Items" Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
+
+        <ListView x:Name="OrderListView"
+                  SelectionChanged="OrderListView_SelectionChanged"
+                  ItemsSource="{x:Bind orderViewModel.Orders}"
+                  SelectionMode="Single"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Order">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock 
+                               Text="{x:Bind OrderID}" 
+                               Margin="4,4,0,4"
+                               FontSize="12"
+                               Foreground="Gray"
+                               HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="SelectedOrderListView"
+                  ItemsSource="{x:Bind orderViewModel.FormOrder.Items}"
+                  SelectionMode="None"
+                  Grid.Row="1"
+                  Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:OrderItem">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock 
+                               Text="{x:Bind Item.Name}" 
+                               Margin="4,4,0,4"
+                               FontSize="12"
+                               Foreground="Gray"
+                               HorizontalAlignment="Left"/>
+                        <TextBlock 
+                               Text="{x:Bind Item.Category}" 
+                               Margin="4,4,0,4"
+                               FontSize="12"
+                               Foreground="Gray"
+                               HorizontalAlignment="Left"/>
+                        <TextBlock 
+                               Text="{x:Bind Amount}"
+                               Margin="4,4,0,4"
+                               FontSize="12"
+                               Foreground="Gray"
+                               HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
