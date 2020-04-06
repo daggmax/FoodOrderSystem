@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using PizzaPalaceClientModelLibrary;
+using ClientModelLibrary;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +19,6 @@ namespace PizzaPalaceCashier.ViewModel
 
         public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
         public Item FormItem { get; set; } = new Item();
-        public object FormCategory { get; internal set; }
 
         public async Task<Item> AddItem(Item item)
         {

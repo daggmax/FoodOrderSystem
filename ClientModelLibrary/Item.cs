@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PizzaPalaceClientModelLibrary
+namespace ClientModelLibrary
 {
     public class Item : INotifyPropertyChanged
     {

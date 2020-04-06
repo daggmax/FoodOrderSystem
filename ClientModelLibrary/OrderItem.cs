@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PizzaPalaceClientModelLibrary
+namespace ClientModelLibrary
 {
     public class OrderItem : INotifyPropertyChanged
     {
@@ -28,16 +28,6 @@ namespace PizzaPalaceClientModelLibrary
             }
         }
         private int itemID;
-        public Item Item
-        {
-            get { return this.item; }
-            set
-            {
-                this.item = value;
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Item)));
-            }
-        }
-        private Item item;
         public float Price
         {
             get { return this.price; }
@@ -58,6 +48,16 @@ namespace PizzaPalaceClientModelLibrary
             }
         }
         private int amount;
+        public Item Item
+        {
+            get { return this.item; }
+            set
+            {
+                this.item = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Item)));
+            }
+        }
+        private Item item;
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

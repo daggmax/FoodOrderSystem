@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PizzaPalaceClientModelLibrary
+namespace ClientModelLibrary
 {
     public class Category : INotifyPropertyChanged
     {

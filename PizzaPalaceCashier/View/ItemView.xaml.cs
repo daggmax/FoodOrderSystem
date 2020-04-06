@@ -1,4 +1,4 @@
-﻿using PizzaPalaceClientModelLibrary;
+﻿using ClientModelLibrary;
 using PizzaPalaceCashier.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -77,7 +77,9 @@ namespace PizzaPalaceCashier.View
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await itemViewModel.DeleteItem(new Item().CopyFrom(itemViewModel.FormItem));
+
             itemViewModel.FormItem.SetDefaults();
+            ItemListView.SelectedItem = null;
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

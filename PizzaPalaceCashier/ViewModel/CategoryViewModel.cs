@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using PizzaPalaceClientModelLibrary;
+using ClientModelLibrary;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

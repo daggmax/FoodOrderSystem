@@ -5,7 +5,7 @@
     xmlns:local="using:PizzaPalaceCashier.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:PizzaPalaceClientModelLibrary"
+    xmlns:model="using:ClientModelLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -46,7 +46,11 @@
                              HorizontalAlignment="Center"
                              Margin="4,4,4,4">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="ms-appx:///Assets/pizza.png"/>
+                                <ImageBrush>
+                                    <ImageBrush.ImageSource >
+                                        <BitmapImage UriSource="{Binding ImageURL, FallbackValue=null}"/>
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
                             </Rectangle.Fill>
                         </Rectangle>
                         <TextBlock
@@ -88,7 +92,11 @@
                         <StackPanel Orientation="Horizontal" Height="64">
                             <Ellipse Height="48" Width="48" VerticalAlignment="Center">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="ms-appx:///Assets/pizza.png"/>
+                                    <ImageBrush>
+                                        <ImageBrush.ImageSource>
+                                            <BitmapImage UriSource="{Binding Item.ImageURL, FallbackValue=null}"/>
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="12,0,0,0">

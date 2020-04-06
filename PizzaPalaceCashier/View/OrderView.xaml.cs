@@ -1,4 +1,4 @@
-﻿using PizzaPalaceClientModelLibrary;
+﻿using ClientModelLibrary;
 using PizzaPalaceCashier.ViewModel;
 using System;
 using System.Collections.Generic;
