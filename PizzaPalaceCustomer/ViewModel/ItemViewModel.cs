@@ -20,7 +20,7 @@ namespace PizzaPalaceCustomer.ViewModel
         public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
         public Item FormItem { get; set; } = new Item();
 
-        public async Task FetchItems()
+        public async Task FetchItems(ObservableCollection<Category> categories)
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);
             var items = JsonConvert.DeserializeObject<ObservableCollection<Item>>(await response.Content.ReadAsStringAsync());
@@ -36,6 +36,7 @@ namespace PizzaPalaceCustomer.ViewModel
             {
                 if (this.Items.FirstOrDefault(x => x.ItemID == item.ItemID) == null)
                 {
+                    item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();
                     this.Items.Add(item);
                 }
             }

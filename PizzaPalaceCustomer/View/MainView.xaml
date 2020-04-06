@@ -28,56 +28,66 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-
-        <GridView x:Name="ItemGridView"
+        
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1"
+                    Grid.ColumnSpan ="5"
+                    Grid.RowSpan="5">
+            <GridView x:Name="ItemGridView"
                   ItemsSource="{x:Bind itemViewModel.Items}"
                   SelectionMode="Single"
-                  SelectionChanged="ItemGridView_SelectionChanged"
-                  Grid.Row="1"
-                  Grid.RowSpan="5"
-                  Grid.ColumnSpan="5">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:Item">
-                    <StackPanel Orientation="Vertical">
-                        <Rectangle x:Name="Rectangle" 
-                             Width ="200"
-                             Height="200"
-                             VerticalAlignment="Center"
-                             HorizontalAlignment="Center"
-                             Margin="4,4,4,4">
-                            <Rectangle.Fill>
-                                <ImageBrush>
-                                    <ImageBrush.ImageSource >
-                                        <BitmapImage UriSource="{Binding ImageURL, FallbackValue=null}"/>
-                                    </ImageBrush.ImageSource>
-                                </ImageBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <TextBlock
-                               Margin="4,4,0,4"
-                               Text="{x:Bind Name}" 
-                               Style="{ThemeResource BodyTextBlockStyle}" 
-                               HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="PriceTextBlock" 
-                               Text="{x:Bind Price}" 
-                               Margin="4,4,0,4"
-                               FontSize="12"
-                               Foreground="Gray"
-                               HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+                  SelectionChanged="ItemGridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Item">
+                        <StackPanel Orientation="Vertical">
+                            <Rectangle x:Name="Rectangle" 
+                                       Width ="200"
+                                       Height="200"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Margin="4,4,4,4">
+                                <Rectangle.Fill>
+                                    <ImageBrush>
+                                        <ImageBrush.ImageSource >
+                                            <BitmapImage UriSource="{Binding ImageURL, FallbackValue=null}"/>
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock Margin="4,4,0,4"
+                                       Text="{x:Bind Name}" 
+                                       Style="{ThemeResource BaseTextBlockStyle}" 
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="PriceTextBlock" 
+                                       Text="{x:Bind Price}" 
+                                       Margin="4,4,0,4"
+                                       FontSize="12"
+                                       Style="{ThemeResource BodyTextBlockStyle}" 
+                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Category}" 
+                                       Style="{ThemeResource BodyTextBlockStyle}" 
+                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                       Margin="4,4,0,4"
+                                       FontSize="12"
+                                       HorizontalAlignment="Center"/>
 
-        <ListView 
-            x:Name="CartListView"
-            SelectionMode="None"
-            ItemsSource="{x:Bind orderViewModel.FormOrder.Items}" 
-            HorizontalAlignment="Stretch"
-            Grid.Row="1" 
-            Grid.Column="6"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="4">
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+        
+
+        <ListView x:Name="CartListView"
+                  SelectionMode="None"
+                  ItemsSource="{x:Bind orderViewModel.FormOrder.Items}" 
+                  HorizontalAlignment="Stretch"
+                  Grid.Row="1" 
+                  Grid.Column="6"
+                  Grid.ColumnSpan="2"
+                  Grid.RowSpan="4">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:OrderItem">
                     <Grid>
@@ -88,7 +98,6 @@
                             <ColumnDefinition Width="160"/>
                             <ColumnDefinition Width="140"/>
                         </Grid.ColumnDefinitions>
-
                         <StackPanel Orientation="Horizontal" Height="64">
                             <Ellipse Height="48" Width="48" VerticalAlignment="Center">
                                 <Ellipse.Fill>
@@ -100,11 +109,19 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="12,0,0,0">
-                                <TextBlock Text="{x:Bind Item.Name, Mode=OneWay}" Style="{ThemeResource BaseTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" />
-                                <TextBlock Text="{x:Bind Price, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                <TextBlock Text="{x:Bind Item.Name, Mode=OneWay}" 
+                                           Style="{ThemeResource BaseTextBlockStyle}" 
+                                           Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" />
+                                <TextBlock Text="{x:Bind Price, Mode=OneWay}" 
+                                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel  Height="64" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <StackPanel Height="64" 
+                                    Grid.Column="1" 
+                                    Orientation="Horizontal" 
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right">
                             <Button Content="-" Margin="0,0,8,0" Height="30" Width="30" Click="MinusButton_Click" />
                             <TextBlock Text="{x:Bind Amount}" x:DefaultBindMode="TwoWay" VerticalAlignment="Center"/>
                             <Button Content="+" Margin="8" Height="30" Width="30" Click="PlusButton_Click"/>

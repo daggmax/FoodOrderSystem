@@ -69,8 +69,8 @@ namespace PizzaPalaceCashier.View
                 {
                     await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                     {
-                        await this.itemViewModel.FetchItems();
                         await this.categoryViewModel.FetchCategories();
+                        await this.itemViewModel.FetchItems(categoryViewModel.Categories);
                     });
                     if (this.orderViewModel.FormOrder.OrderID > 0)
                     {
