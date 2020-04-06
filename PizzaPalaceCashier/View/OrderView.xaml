@@ -26,11 +26,8 @@
                 HorizontalAlignment="Right"/>
 
         <CommandBar Grid.ColumnSpan="2">
-            <AppBarButton Icon="Back" Label="Back" Click="BackButton_Click"/>
-            <AppBarSeparator/>
             <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click"/>
             <AppBarButton Icon="Accept" Label="Completed" Click="SaveButton_Click"/>
-
             <CommandBar.Content>
                 <TextBlock Text="Orders" Margin="12,14"/>
             </CommandBar.Content>
@@ -43,12 +40,20 @@
                   Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Order">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock 
-                               Text="{x:Bind OrderID}" 
+                               Text="ID"
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
                                Margin="4,4,0,4"
                                FontSize="12"
-                               Foreground="Gray"
+                               HorizontalAlignment="Left"/>
+                        <TextBlock 
+                               Text="{x:Bind OrderID}"
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
+                               Margin="4,4,0,4"
+                               FontSize="12"
                                HorizontalAlignment="Left"/>
                     </StackPanel>
                 </DataTemplate>
@@ -65,22 +70,34 @@
                     <StackPanel Orientation="Vertical">
                         <TextBlock 
                                Text="{x:Bind Item.Name}" 
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
                                Margin="4,4,0,4"
                                FontSize="12"
-                               Foreground="Gray"
                                HorizontalAlignment="Left"/>
                         <TextBlock 
                                Text="{x:Bind Item.Category}" 
+                               Style="{ThemeResource BodyTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                Margin="4,4,0,4"
                                FontSize="12"
-                               Foreground="Gray"
                                HorizontalAlignment="Left"/>
-                        <TextBlock 
-                               Text="{x:Bind Amount}"
-                               Margin="4,4,0,4"
-                               FontSize="12"
-                               Foreground="Gray"
-                               HorizontalAlignment="Left"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                   Text="Amount:"
+                                   Style="{ThemeResource BodyTextBlockStyle}"
+                                   Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                   Margin="4,4,0,4"
+                                   FontSize="12"
+                                   HorizontalAlignment="Left"/>
+                            <TextBlock 
+                                   Text="{x:Bind Amount}"
+                                   Style="{ThemeResource BodyTextBlockStyle}"
+                                   Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                   Margin="4,4,0,4"
+                                   FontSize="12"
+                                   HorizontalAlignment="Left"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

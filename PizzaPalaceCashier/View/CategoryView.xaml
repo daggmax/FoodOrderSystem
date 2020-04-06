@@ -26,11 +26,8 @@
                 HorizontalAlignment="Right"/>
 
         <CommandBar Grid.ColumnSpan="2">
-            <AppBarButton Icon="Back" Label="Back" Click="BackButton_Click"/>
-            <AppBarSeparator/>
             <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click" IsEnabled="{x:Bind categoryViewModel.FormCategory.Exists, Mode=OneWay}"/>
             <AppBarButton Icon="Save" Label="Save" Click="SaveButton_Click"/>
-
             <CommandBar.Content>
                 <TextBlock Text="Categories" Margin="12,14"/>
             </CommandBar.Content>
@@ -45,10 +42,11 @@
                 <DataTemplate x:DataType="model:Category">
                     <StackPanel Orientation="Vertical">
                         <TextBlock x:Name="PriceTextBlock" 
-                               Text="{x:Bind Name}" 
+                               Text="{x:Bind Name}"
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
                                Margin="4,4,0,4"
                                FontSize="12"
-                               Foreground="Gray"
                                HorizontalAlignment="Left"/>
                     </StackPanel>
                 </DataTemplate>
@@ -61,9 +59,10 @@
                     Margin="10,0,0,0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Name:"
+                           Style="{ThemeResource BaseTextBlockStyle}"
+                           Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
                            VerticalAlignment="Center"/>
-                <TextBox x:Name="Test"
-                         Margin="20,0,0,0"
+                <TextBox Margin="20,0,0,0"
                          Text="{x:Bind categoryViewModel.FormCategory.Name, Mode=TwoWay}"
                          PlaceholderText="ex. Pizza"/>
             </StackPanel>

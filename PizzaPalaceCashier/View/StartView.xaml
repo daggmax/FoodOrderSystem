@@ -8,17 +8,59 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Grid x:Name="LayoutRoot"
+            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <NavigationView x:Name="NavView"
+                        OpenPaneLength="160"
+                        AlwaysShowHeader="False"
+                        IsSettingsVisible="False"
+                        PaneDisplayMode="Left"
+                        BackRequested="NavView_BackRequested"
+                        ItemInvoked="NavigationView_ItemInvoked"
+                        IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="OrdersMenuItem"
+                                    Content="{x:Bind OrdersListLabel}" 
+                                    ToolTipService.ToolTip="{x:Bind OrdersListLabel}"
+                                    Icon="ContactInfo"/>
+                <NavigationViewItem x:Name="ItemsMenuItem"
+                                    Content="{x:Bind ItemsListLabel}"
+                                    ToolTipService.ToolTip="{x:Bind ItemsListLabel}"
+                                    Icon="Shop"/>
+                <NavigationViewItem x:Name="CategoriesMenuItem"
+                                    Content="{x:Bind CategoriesListLabel}"
+                                    ToolTipService.ToolTip="{x:Bind CategoriesListLabel}"
+                                    Icon="Pin"/>
+            </NavigationView.MenuItems>
+
+            <!-- In OnNavigatingToPage, we synchronize the selected item in the NavigationView with the current page. -->
+            <Frame
+            x:Name="frame"
+            Margin="20,0,0,0"
+            Navigating="OnNavigatingToPage">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </NavigationView>
+    </Grid>
+
+    <!--<NavigationView x:Name="NavigationViewControl" 
+                        PaneDisplayMode="Top" 
+                        ItemInvoked="NavigationViewControl_ItemInvoked">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Orders"/>
+                <NavigationViewItem Content="Items" x:Name="B" />
+                <NavigationViewItem Content="Categories" x:Name="C" />
+            </NavigationView.MenuItems>
+        </NavigationView>
+
         <Button Content="Categories"
                 FontSize="60"
                 Click="ButtonCategories_Click"
@@ -39,5 +81,5 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Grid.Row="1"/>
-    </Grid>
+    </Grid>-->
 </Page>

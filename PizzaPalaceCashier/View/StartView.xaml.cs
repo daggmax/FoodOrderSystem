@@ -26,20 +26,50 @@ namespace PizzaPalaceCashier.View
         {
             this.InitializeComponent();
         }
+        public readonly string OrdersListLabel = "Orders";
+        public readonly string ItemsListLabel = "Items";
+        public readonly string CategoriesListLabel = "Categories";
+        public Frame AppFrame => frame;
 
-        private void ButtonCategories_Click(object sender, RoutedEventArgs e)
+        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
         {
-            this.Frame.Navigate(typeof(CategoryView));
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                if (e.SourcePageType == typeof(OrderView))
+                {
+                    NavView.SelectedItem = OrdersMenuItem;
+                    frame.Navigate(typeof(OrderView));
+                }
+                else if (e.SourcePageType == typeof(ItemView))
+                {
+                    NavView.SelectedItem = ItemsMenuItem;
+                    frame.Navigate(typeof(ItemView));
+                }
+                else if (e.SourcePageType == typeof(CategoryView))
+                {
+                    NavView.SelectedItem = CategoriesMenuItem;
+                    frame.Navigate(typeof(CategoryView));
+                }
+            }
         }
-
-        private void ButtonItems_Click(object sender, RoutedEventArgs e)
+        private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            this.Frame.Navigate(typeof(ItemView));
+            var label = args.InvokedItem as string;
+            var pageType =
+                label == OrdersListLabel ? typeof(OrderView) :
+                label == ItemsListLabel ? typeof(ItemView) : 
+                label == CategoriesListLabel ? typeof(CategoryView) : null;
+            if (pageType != null && pageType != AppFrame.CurrentSourcePageType)
+            {
+                AppFrame.Navigate(pageType);
+            }
         }
-
-        private void ButtonOrders_Click(object sender, RoutedEventArgs e)
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
-            this.Frame.Navigate(typeof(OrderView));
+            if (AppFrame.CanGoBack)
+            {
+                AppFrame.GoBack();
+            }
         }
     }
 }

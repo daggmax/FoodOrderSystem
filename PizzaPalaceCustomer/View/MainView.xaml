@@ -125,7 +125,7 @@
         <TextBlock Text="Cart"
                    Grid.Column="6"
                    FontSize="50"/>
-        <TextBlock Text="Pizza"
+        <TextBlock Text="Item"
                    FontSize="50"/>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="5"

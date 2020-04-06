@@ -26,8 +26,6 @@
                 HorizontalAlignment="Right"/>
 
         <CommandBar Grid.ColumnSpan="2">
-            <AppBarButton Icon="Back" Label="Back" Click="BackButton_Click"/>
-            <AppBarSeparator/>
             <AppBarButton Icon="Delete" Label="Delete" Click="DeleteButton_Click" IsEnabled="{x:Bind itemViewModel.FormItem.Exists, Mode=OneWay}"/>
             <AppBarButton Icon="Save" Label="Save" Click="SaveButton_Click"/>
 
@@ -43,14 +41,13 @@
                   Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Item">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock 
-                               Text="{x:Bind Name}" 
+                    <TextBlock 
+                               Text="{x:Bind Name}"
+                               Style="{ThemeResource BaseTextBlockStyle}"
+                               Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
                                Margin="4,4,0,4"
                                FontSize="12"
-                               Foreground="Gray"
                                HorizontalAlignment="Left"/>
-                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -61,40 +58,50 @@
                     Margin="10,0,0,0">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Name:"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Width="100"/>
                 <TextBox Margin="20,0,0,0"
                          Text="{x:Bind itemViewModel.FormItem.Name, Mode=TwoWay}"
-                         PlaceholderText="ex. Vesuvio"/>
+                         PlaceholderText="ex. Vesuvio"
+                         Width="300"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Category:"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Width="100"/>
                 <ComboBox x:Name="CategoryComboBox"
                           Margin="20,0,0,0"       
                           ItemsSource="{x:Bind categoryViewModel.Categories, Mode=OneWay}"
                           SelectionChanged="CategoryComboBox_SelectionChanged"
-                          PlaceholderText="Choose category"/>
+                          PlaceholderText="Choose category"
+                          Width="300"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Price:"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Width="100"/>
                 <TextBox Margin="20,0,0,0"
                          Text="{x:Bind itemViewModel.FormItem.Price, Mode=TwoWay}"
-                         PlaceholderText="ex. 50"/>
+                         PlaceholderText="ex. 50"
+                         Width="300"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Description:"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Width="100"/>
                 <TextBox Margin="20,0,0,0"
                          Text="{x:Bind itemViewModel.FormItem.Description, Mode=TwoWay}"
-                         PlaceholderText="ex. Ham, cheese, tomato"/>
+                         PlaceholderText="ex. Ham, cheese, tomato"
+                         Width="300"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Image URL:"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           Width="100"/>
                 <TextBox Margin="20,0,0,0"
                          Text="{x:Bind itemViewModel.FormItem.ImageURL, Mode=TwoWay}"
-                         PlaceholderText="ex. https://localhost/image.png"/>
+                         PlaceholderText="ex. https://localhost/image.png"
+                         Width="300"/>
             </StackPanel>
         </StackPanel>
     </Grid>
