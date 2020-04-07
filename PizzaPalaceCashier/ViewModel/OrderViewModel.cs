@@ -1,15 +1,13 @@
 ﻿using Newtonsoft.Json;
-using ClientModelLibrary;
+using PizzaPalace.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaPalaceCashier.ViewModel
+namespace PizzaPalace.ViewModel
 {
     class OrderViewModel
     {
@@ -59,6 +57,20 @@ namespace PizzaPalaceCashier.ViewModel
                         item.Item = items.Where(i => i.ItemID == item.ItemID).FirstOrDefault();
                     }
                     this.Orders.Add(order);
+                }
+                else
+                {
+                    int index = this.Orders.IndexOf(this.Orders.FirstOrDefault(i => i.OrderID == order.OrderID));
+                    if (!this.Orders[index].FieldEquals(order))
+                    {
+                        response = await this.httpClient.GetAsync(URL + "/OrderItems" + "/" + order.OrderID);
+                        order.Items = JsonConvert.DeserializeObject<ObservableCollection<OrderItem>>(await response.Content.ReadAsStringAsync());
+                        foreach (var item in order.Items)
+                        {
+                            item.Item = items.Where(i => i.ItemID == item.ItemID).FirstOrDefault();
+                        }
+                        this.Orders[index] = order;
+                    }
                 }
             }
         }

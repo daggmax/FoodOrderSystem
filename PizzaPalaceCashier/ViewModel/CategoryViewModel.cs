@@ -1,18 +1,13 @@
 ﻿using Newtonsoft.Json;
-using ClientModelLibrary;
+using PizzaPalace.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using Windows.UI.Core;
 
-namespace PizzaPalaceCashier.ViewModel
+namespace PizzaPalace.ViewModel
 {
     class CategoryViewModel
     {

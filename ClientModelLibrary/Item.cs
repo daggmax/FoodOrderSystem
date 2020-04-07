@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClientModelLibrary
+namespace PizzaPalace.Model
 {
     public class Item : INotifyPropertyChanged
     {
@@ -123,11 +123,40 @@ namespace ClientModelLibrary
         {
             this.ItemID = item.ItemID;
             this.CategoryID = item.CategoryID;
+            this.Category = item.Category;
             this.Name = item.Name;
             this.Description = item.Description;
             this.Price = item.Price;
             this.ImageURL = item.ImageURL;
             return this;
+        }
+        public bool FieldEquals(Item item)
+        {
+            if (this.ItemID != item.ItemID)
+            {
+                return false;
+            }
+            if (this.CategoryID != item.CategoryID)
+            {
+                return false;
+            }
+            if (this.Name != item.Name)
+            {
+                return false;
+            }
+            if (this.Description != item.Description)
+            {
+                return false;
+            }
+            if (this.Price != item.Price)
+            {
+                return false;
+            }
+            if (this.ImageURL != item.ImageURL)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

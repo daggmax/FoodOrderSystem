@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PizzaPalaceBackend.Data;
+using PizzaPalace.Data;
 
-namespace PizzaPalaceBackend.Migrations
+namespace PizzaPalace.Migrations
 {
-    [DbContext(typeof(PizzaPalaceBackendContext))]
-    [Migration("20200405231709_Intitial")]
-    partial class Intitial
+    [DbContext(typeof(PizzaPalaceContext))]
+    [Migration("20200407124358_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace PizzaPalaceBackend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PizzaPalaceBackend.Model.Category", b =>
+            modelBuilder.Entity("PizzaPalace.Model.Category", b =>
                 {
                     b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace PizzaPalaceBackend.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("PizzaPalaceBackend.Model.Item", b =>
+            modelBuilder.Entity("PizzaPalace.Model.Item", b =>
                 {
                     b.Property<int>("ItemID")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace PizzaPalaceBackend.Migrations
                     b.ToTable("Item");
                 });
 
-            modelBuilder.Entity("PizzaPalaceBackend.Model.Order", b =>
+            modelBuilder.Entity("PizzaPalace.Model.Order", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace PizzaPalaceBackend.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("PizzaPalaceBackend.Model.OrderItem", b =>
+            modelBuilder.Entity("PizzaPalace.Model.OrderItem", b =>
                 {
                     b.Property<int>("OrderID")
                         .HasColumnType("int");

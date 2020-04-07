@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClientModelLibrary
+namespace PizzaPalace.Model
 {
     public class Order : INotifyPropertyChanged
     {
@@ -27,6 +27,7 @@ namespace ClientModelLibrary
             {
                 this.orderTime = value;
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OrderTime)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InProgress)));
             }
         }
         private DateTime? orderTime;
@@ -37,6 +38,7 @@ namespace ClientModelLibrary
             {
                 this.finishTime = value;
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FinishTime)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InProgress)));
             }
         }
         private DateTime? finishTime;
@@ -51,6 +53,14 @@ namespace ClientModelLibrary
                 }
                 return total;
             }
+        }
+
+        public bool InProgress
+        { 
+            get
+            {
+                return this.FinishTime == null && this.OrderTime != null;
+            } 
         }
         public ObservableCollection<OrderItem> Items { get; set; } = new ObservableCollection<OrderItem>();
 
@@ -80,14 +90,32 @@ namespace ClientModelLibrary
                 orderItem.Amount++;
                 return orderItem;
             }
-            orderItem = new OrderItem();
-            orderItem.OrderID = this.OrderID;
-            orderItem.ItemID = item.ItemID;
+            orderItem = new OrderItem
+            {
+                OrderID = this.OrderID,
+                ItemID = item.ItemID,
+                Item = item,
+                Price = item.Price
+            };
             orderItem.Amount++;
-            orderItem.Item = item;
-            orderItem.Price = item.Price;
             this.Items.Add(orderItem);
             return orderItem;
+        }
+        public bool FieldEquals(Order order)
+        {
+            if (this.OrderID != order.OrderID)
+            {
+                return false;
+            }
+            if (this.OrderTime != order.OrderTime)
+            {
+                return false;
+            }
+            if (this.FinishTime != order.FinishTime)
+            {
+                return false;
+            }
+            return true;
         }
 
         public void NotifyTotalCost()

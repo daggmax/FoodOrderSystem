@@ -1,7 +1,7 @@
 ﻿<Application
-    x:Class="PizzaPalaceCashier.App"
+    x:Class="PizzaPalace.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PizzaPalaceCashier">
+    xmlns:local="using:PizzaPalace">
 
 </Application>

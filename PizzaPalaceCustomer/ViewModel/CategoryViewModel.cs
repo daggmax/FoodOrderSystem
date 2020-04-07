@@ -1,18 +1,11 @@
 ﻿using Newtonsoft.Json;
-using ClientModelLibrary;
-using System;
-using System.Collections.Generic;
+using PizzaPalace.Model;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using Windows.UI.Core;
 
-namespace PizzaPalaceCustomer.ViewModel
+namespace PizzaPalace.ViewModel
 {
     class CategoryViewModel
     {
@@ -21,7 +14,6 @@ namespace PizzaPalaceCustomer.ViewModel
         private const string ControllerName = "Categories";
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
-        public Category FormCategory { get; set; } = new Category();
         
         public async Task FetchCategories()
         {

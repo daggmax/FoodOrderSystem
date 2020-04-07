@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PizzaPalaceBackend.Data;
-using PizzaPalaceBackend.Model;
+using PizzaPalace.Data;
+using PizzaPalace.Model;
 
-namespace PizzaPalaceBackend.Controllers
+namespace PizzaPalace.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private readonly PizzaPalaceBackendContext _context;
+        private readonly PizzaPalaceContext _context;
 
-        public OrdersController(PizzaPalaceBackendContext context)
+        public OrdersController(PizzaPalaceContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace PizzaPalaceBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrder()
         {
-            return await _context.Order.Where(o => o.FinishTime == null).ToListAsync();
+            return await _context.Order.Where(o => o.FinishTime == null || o.FinishTime.Value.AddMinutes(5).CompareTo(DateTime.Now) == 1).ToListAsync();
         }
 
         // GET: api/Orders/5

@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PizzaPalaceBackend.Data;
-using PizzaPalaceBackend.Model;
+using PizzaPalace.Data;
+using PizzaPalace.Model;
 
-namespace PizzaPalaceBackend.Controllers
+namespace PizzaPalace.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class OrderItemsController : ControllerBase
     {
-        private readonly PizzaPalaceBackendContext _context;
+        private readonly PizzaPalaceContext _context;
 
-        public OrderItemsController(PizzaPalaceBackendContext context)
+        public OrderItemsController(PizzaPalaceContext context)
         {
             _context = context;
         }

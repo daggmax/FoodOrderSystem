@@ -1,21 +1,18 @@
 ﻿using Newtonsoft.Json;
-using ClientModelLibrary;
+using PizzaPalace.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaPalaceCustomer.ViewModel
+namespace PizzaPalace.ViewModel
 {
     class OrderViewModel
     {
-        public Order FormOrder { get; set; } = new Order();
-        HttpClient httpClient = new HttpClient();
         private const string URL = "https://localhost:5001/api";
         private const string ControllerName = "Orders";
+        HttpClient httpClient = new HttpClient();
+        public Order FormOrder { get; set; } = new Order();
 
         public async Task<Order> AddOrder(Order order)
         {

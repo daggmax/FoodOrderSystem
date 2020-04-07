@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaPalaceCashier", "Pizza
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaPalaceCustomer", "PizzaPalaceCustomer\PizzaPalaceCustomer.csproj", "{BF10E1E9-AF24-4E16-9413-8CA7FB2BC414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientModelLibrary", "ClientModelLibrary\ClientModelLibrary.csproj", "{D5EFD10E-F071-43CA-8544-E684A11F8547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientModelLibrary", "ClientModelLibrary\ClientModelLibrary.csproj", "{D5EFD10E-F071-43CA-8544-E684A11F8547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

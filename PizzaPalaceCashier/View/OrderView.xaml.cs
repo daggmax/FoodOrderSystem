@@ -1,26 +1,15 @@
-﻿using ClientModelLibrary;
-using PizzaPalaceCashier.ViewModel;
+﻿using PizzaPalace.Model;
+using PizzaPalace.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page order template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace PizzaPalaceCashier.View
+namespace PizzaPalace.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -66,17 +55,15 @@ namespace PizzaPalaceCashier.View
                 return;
             }
             orderViewModel.FormOrder.FinishTime = DateTime.Now;
-            await orderViewModel.UpdateOrder(new Order().CopyFrom(orderViewModel.FormOrder)); 
+            await orderViewModel.UpdateOrder(new Order().CopyFrom(orderViewModel.FormOrder));
+            OrderListView.SelectedItem = null;
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await orderViewModel.DeleteOrder(new Order().CopyFrom(orderViewModel.FormOrder));
             orderViewModel.FormOrder.SetDefaults();
-        }
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.GoBack();
+            OrderListView.SelectedItem = null;
         }
 
         private void OrderListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

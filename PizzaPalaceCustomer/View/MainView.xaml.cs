@@ -1,26 +1,16 @@
-﻿using ClientModelLibrary;
-using PizzaPalaceCustomer.ViewModel;
+﻿using PizzaPalace.Model;
+using PizzaPalace.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace PizzaPalaceCashier.View
+namespace PizzaPalace.View
 {
     internal static class ContentDialogMaker
     {
@@ -62,7 +52,7 @@ namespace PizzaPalaceCashier.View
         private bool destroyed;
         public MainView()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();            
             Task.Run(async () =>
             {
                 while (!this.destroyed)
@@ -145,8 +135,8 @@ namespace PizzaPalaceCashier.View
         {
             if (this.orderViewModel.FormOrder.OrderID == 0 && ItemGridView.SelectedItem != null)
             {
-                orderViewModel.FormOrder.AddItem(ItemGridView.SelectedItem as Item);
-                orderViewModel.FormOrder.NotifyTotalCost();
+                this.orderViewModel.FormOrder.AddItem(ItemGridView.SelectedItem as Item);
+                this.orderViewModel.FormOrder.NotifyTotalCost();
             }
             ItemGridView.SelectedItem = null;
         }
@@ -160,7 +150,7 @@ namespace PizzaPalaceCashier.View
             }
             var index = this.GetIndexFromListViewByOriginalSource(e.OriginalSource);
             this.orderViewModel.FormOrder.Items[index].Amount++;
-            orderViewModel.FormOrder.NotifyTotalCost();
+            this.orderViewModel.FormOrder.NotifyTotalCost();
             
         }
         private async void MinusButton_Click(object sender, RoutedEventArgs e)
@@ -176,7 +166,7 @@ namespace PizzaPalaceCashier.View
             {
                 this.orderViewModel.FormOrder.Items.RemoveAt(index);
             }
-            orderViewModel.FormOrder.NotifyTotalCost();
+            this.orderViewModel.FormOrder.NotifyTotalCost();
         }
 
         private async void ClearCartButton_Click(object sender, RoutedEventArgs e)
@@ -187,7 +177,7 @@ namespace PizzaPalaceCashier.View
                 return;
             }
             this.orderViewModel.FormOrder.Items.Clear();
-            orderViewModel.FormOrder.NotifyTotalCost();
+            this.orderViewModel.FormOrder.NotifyTotalCost();
         }
         private async void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
@@ -200,8 +190,8 @@ namespace PizzaPalaceCashier.View
             {
                 return;
             }
-            await orderViewModel.AddOrder(this.orderViewModel.FormOrder);
-            orderViewModel.FormOrder.NotifyTotalCost();
+            await this.orderViewModel.AddOrder(this.orderViewModel.FormOrder);
+            this.orderViewModel.FormOrder.NotifyTotalCost();
             await DisplayOrderPlacedDialog();
         }
 

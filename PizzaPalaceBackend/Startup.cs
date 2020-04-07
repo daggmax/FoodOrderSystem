@@ -11,9 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using PizzaPalaceBackend.Data;
+using PizzaPalace.Data;
 
-namespace PizzaPalaceBackend
+namespace PizzaPalace
 {
     public class Startup
     {
@@ -29,8 +29,8 @@ namespace PizzaPalaceBackend
         {
             services.AddControllers();
 
-            services.AddDbContext<PizzaPalaceBackendContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("PizzaPalaceBackendContext")));
+            services.AddDbContext<PizzaPalaceContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("PizzaPalaceContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

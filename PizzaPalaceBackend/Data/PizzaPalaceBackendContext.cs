@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PizzaPalaceBackend.Model;
+using PizzaPalace.Model;
 
-namespace PizzaPalaceBackend.Data
+namespace PizzaPalace.Data
 {
-    public class PizzaPalaceBackendContext : DbContext
+    public class PizzaPalaceContext : DbContext
     {
-        public PizzaPalaceBackendContext (DbContextOptions<PizzaPalaceBackendContext> options)
+        public PizzaPalaceContext (DbContextOptions<PizzaPalaceContext> options)
             : base(options)
         {
         }
@@ -19,12 +19,12 @@ namespace PizzaPalaceBackend.Data
             modelBuilder.Entity<Model.OrderItem>().HasKey(sc => new { sc.OrderID, sc.ItemID });
         }
 
-        public DbSet<PizzaPalaceBackend.Model.Category> Category { get; set; }
+        public DbSet<PizzaPalace.Model.Category> Category { get; set; }
 
-        public DbSet<PizzaPalaceBackend.Model.Item> Item { get; set; }
+        public DbSet<PizzaPalace.Model.Item> Item { get; set; }
 
-        public DbSet<PizzaPalaceBackend.Model.Order> Order { get; set; }
+        public DbSet<PizzaPalace.Model.Order> Order { get; set; }
 
-        public DbSet<PizzaPalaceBackend.Model.OrderItem> OrderItem { get; set; }
+        public DbSet<PizzaPalace.Model.OrderItem> OrderItem { get; set; }
     }
 }

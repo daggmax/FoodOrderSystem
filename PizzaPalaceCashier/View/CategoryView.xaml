@@ -1,11 +1,12 @@
 ﻿<Page
-    x:Class="PizzaPalaceCashier.View.CategoryView"
+    x:Class="PizzaPalace.View.CategoryView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PizzaPalaceCashier.View"
+    xmlns:local="using:PizzaPalace.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:ClientModelLibrary"
+    xmlns:model="using:PizzaPalace"
+    xmlns:model1="using:PizzaPalace.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -39,7 +40,7 @@
                   SelectionMode="Single"
                   Grid.Row="1">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:Category">
+                <DataTemplate x:DataType="model1:Category">
                     <StackPanel Orientation="Vertical">
                         <TextBlock x:Name="PriceTextBlock" 
                                Text="{x:Bind Name}"

@@ -7,7 +7,7 @@
     <ProjectGuid>{BF10E1E9-AF24-4E16-9413-8CA7FB2BC414}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PizzaPalaceCustomer</RootNamespace>
+    <RootNamespace>PizzaPalace</RootNamespace>
     <AssemblyName>PizzaPalaceCustomer</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -126,9 +126,6 @@
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\WaitingView.xaml.cs">
-      <DependentUpon>WaitingView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -151,10 +148,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="View\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WaitingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

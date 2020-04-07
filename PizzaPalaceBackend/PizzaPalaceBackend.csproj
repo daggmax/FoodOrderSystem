@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>PizzaPalace</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +10,8 @@
     <Compile Remove="Migrations\20200404153023_Initial.Designer.cs" />
     <Compile Remove="Migrations\20200404154204_Initial.cs" />
     <Compile Remove="Migrations\20200404154204_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200405231709_Intitial.cs" />
+    <Compile Remove="Migrations\20200405231709_Intitial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

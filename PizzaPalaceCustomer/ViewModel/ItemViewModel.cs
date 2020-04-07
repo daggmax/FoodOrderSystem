@@ -1,15 +1,11 @@
 ﻿using Newtonsoft.Json;
-using ClientModelLibrary;
-using System;
-using System.Collections.Generic;
+using PizzaPalace.Model;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaPalaceCustomer.ViewModel
+namespace PizzaPalace.ViewModel
 {
     class ItemViewModel
     {
@@ -18,7 +14,6 @@ namespace PizzaPalaceCustomer.ViewModel
         private const string ControllerName = "Items";
 
         public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
-        public Item FormItem { get; set; } = new Item();
 
         public async Task FetchItems(ObservableCollection<Category> categories)
         {
@@ -34,10 +29,18 @@ namespace PizzaPalaceCustomer.ViewModel
 
             foreach (var item in items)
             {
-                if (this.Items.FirstOrDefault(x => x.ItemID == item.ItemID) == null)
+                item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();
+                if (this.Items.FirstOrDefault(i => i.ItemID == item.ItemID) == null)
                 {
-                    item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();
                     this.Items.Add(item);
+                }
+                else
+                {
+                    int index = this.Items.IndexOf(this.Items.FirstOrDefault(i => i.ItemID == item.ItemID));
+                    if (!this.Items[index].FieldEquals(item))
+                    {
+                        this.Items[index] = item;
+                    }
                 }
             }
         }

@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="44869c5b-de96-4772-9bf9-3a3b72d06a4e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>PizzaPalaceCustomer</DisplayName>
+    <DisplayName>PizzaPalace</DisplayName>
     <PublisherDisplayName>maxro</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="PizzaPalaceCustomer.App">
+      EntryPoint="PizzaPalace.App">
       <uap:VisualElements
-        DisplayName="PizzaPalaceCustomer"
+        DisplayName="PizzaPalace"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="PizzaPalaceCustomer"
+        Description="PizzaPalace"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

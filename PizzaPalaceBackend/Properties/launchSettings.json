@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PizzaPalaceBackend": {
+    "PizzaPalace": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

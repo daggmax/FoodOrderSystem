@@ -7,7 +7,7 @@
     <ProjectGuid>{C6221477-3D7E-4B8A-AEC5-8497547CF7B7}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PizzaPalaceCashier</RootNamespace>
+    <RootNamespace>PizzaPalace</RootNamespace>
     <AssemblyName>PizzaPalaceCashier</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
