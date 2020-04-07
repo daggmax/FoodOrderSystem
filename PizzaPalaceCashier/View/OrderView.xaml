@@ -67,40 +67,71 @@
                   Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:OrderItem">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock 
-                               Text="{x:Bind Item.Name}" 
-                               Style="{ThemeResource BaseTextBlockStyle}"
-                               Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
-                               Margin="4,4,0,4"
-                               FontSize="12"
-                               HorizontalAlignment="Left"/>
-                        <TextBlock 
-                               Text="{x:Bind Item.Category}" 
-                               Style="{ThemeResource BodyTextBlockStyle}"
-                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                               Margin="4,4,0,4"
-                               FontSize="12"
-                               HorizontalAlignment="Left"/>
-                        <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width ="100"
+                                 Height="100"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"
+                                 Margin="4,4,4,4">
+                            <Ellipse.Fill>
+                                <ImageBrush>
+                                    <ImageBrush.ImageSource >
+                                        <BitmapImage UriSource="{Binding Item.ImageURL, FallbackValue=null}"/>
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <StackPanel Orientation="Vertical">
                             <TextBlock 
-                                   Text="Amount:"
+                                   Text="{x:Bind Item.Name}" 
+                                   Style="{ThemeResource BaseTextBlockStyle}"
+                                   Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}"
+                                   Margin="4,4,0,4"
+                                   FontSize="12"
+                                   HorizontalAlignment="Left"/>
+                            <TextBlock 
+                                   Text="{x:Bind Item.Category}" 
                                    Style="{ThemeResource BodyTextBlockStyle}"
                                    Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                    Margin="4,4,0,4"
                                    FontSize="12"
                                    HorizontalAlignment="Left"/>
-                            <TextBlock 
-                                   Text="{x:Bind Amount}"
-                                   Style="{ThemeResource BodyTextBlockStyle}"
-                                   Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                   Margin="4,4,0,4"
-                                   FontSize="12"
-                                   HorizontalAlignment="Left"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                       Text="Amount:"
+                                       Style="{ThemeResource BodyTextBlockStyle}"
+                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                       Margin="4,4,0,4"
+                                       FontSize="12"
+                                       HorizontalAlignment="Left"/>
+                                <TextBlock 
+                                       Text="{x:Bind Amount}"
+                                       Style="{ThemeResource BodyTextBlockStyle}"
+                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                       Margin="4,4,0,4"
+                                       FontSize="12"
+                                       HorizontalAlignment="Left"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Orientation="Horizontal"
+                    Margin="8,0,0,0"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom">
+            <TextBlock Text="Total cost:"
+                       FontSize="30"/>
+            <TextBlock Text="{x:Bind orderViewModel.FormOrder.TotalCost, Mode=OneWay}"
+                       Margin="8,0,0,0"
+                       FontSize="30"/>
+            <TextBlock Text="SEK"
+                       FontSize="30"
+                       Margin="8,0,0,0"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

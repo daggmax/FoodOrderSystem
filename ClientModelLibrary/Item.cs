@@ -105,6 +105,7 @@ namespace PizzaPalace.Model
             set
             {
                 this.category = value;
+                this.CategoryID = this.category != null ? this.category.CategoryID : 0;
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
             }
         }
@@ -113,7 +114,7 @@ namespace PizzaPalace.Model
         public void SetDefaults()
         {
             this.ItemID = 0;
-            this.CategoryID = 0;
+            this.Category = null;
             this.Name = "";
             this.Description = "";
             this.Price = 0;

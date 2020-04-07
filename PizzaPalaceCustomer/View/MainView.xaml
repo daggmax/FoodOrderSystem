@@ -92,8 +92,8 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" Height="64">
                             <Ellipse Height="48" Width="48" VerticalAlignment="Center">

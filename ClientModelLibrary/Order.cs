@@ -56,11 +56,11 @@ namespace PizzaPalace.Model
         }
 
         public bool InProgress
-        { 
+        {
             get
             {
                 return this.FinishTime == null && this.OrderTime != null;
-            } 
+            }
         }
         public ObservableCollection<OrderItem> Items { get; set; } = new ObservableCollection<OrderItem>();
 
@@ -78,7 +78,14 @@ namespace PizzaPalace.Model
             this.OrderID = order.OrderID;
             this.OrderTime = order.OrderTime;
             this.FinishTime = order.FinishTime;
-
+            if (order.Items.Count > 0)
+            {
+                this.Items.Clear();
+                foreach (var item in order.Items)
+                {
+                    this.Items.Add(item);
+                }
+            }
             return this;
         }
 

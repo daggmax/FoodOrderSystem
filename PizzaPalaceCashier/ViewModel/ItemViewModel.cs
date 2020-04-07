@@ -58,10 +58,18 @@ namespace PizzaPalace.ViewModel
 
             foreach (var item in items)
             {
-                if (this.Items.FirstOrDefault(x => x.ItemID == item.ItemID) == null)
+                item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();
+                if (this.Items.FirstOrDefault(i => i.ItemID == item.ItemID) == null)
                 {
-                    item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();
                     this.Items.Add(item);
+                }
+                else
+                {
+                    int index = this.Items.IndexOf(this.Items.FirstOrDefault(i => i.ItemID == item.ItemID));
+                    if (!this.Items[index].FieldEquals(item))
+                    {
+                        this.Items[index] = item;
+                    }
                 }
             }
         }

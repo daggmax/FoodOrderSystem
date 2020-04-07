@@ -55,27 +55,27 @@ namespace PizzaPalace.View
             if (itemViewModel.FormItem.ItemID == 0)
             {
                 await itemViewModel.AddItem(new Item().CopyFrom(itemViewModel.FormItem));
+                var temp = itemViewModel.FormItem.Category;
                 itemViewModel.FormItem.SetDefaults();
+                this.itemViewModel.FormItem.Category = temp;
             }
             else
             {
                 await itemViewModel.UpdateItem(new Item().CopyFrom(itemViewModel.FormItem));
+                var temp = itemViewModel.FormItem.Category;
                 itemViewModel.FormItem.SetDefaults();
+                this.itemViewModel.FormItem.Category = temp;
             }
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await itemViewModel.DeleteItem(new Item().CopyFrom(itemViewModel.FormItem));
-
+            var temp = itemViewModel.FormItem.Category;
             itemViewModel.FormItem.SetDefaults();
+            this.itemViewModel.FormItem.Category = temp;
             ItemListView.SelectedItem = null;
         }
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.GoBack();
-        }
-
         private void ItemListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
@@ -94,11 +94,11 @@ namespace PizzaPalace.View
         {
             if (e.AddedItems.Count > 0)
             {
-                this.itemViewModel.FormItem.CategoryID = (e.AddedItems[0] as Category).CategoryID;
+                this.itemViewModel.FormItem.Category = (e.AddedItems[0] as Category);
             }
             else
             {
-                this.itemViewModel.FormItem.CategoryID = 0;
+                this.itemViewModel.FormItem.Category = null;
             }
         }
     }

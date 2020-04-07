@@ -56,7 +56,6 @@ namespace PizzaPalace.View
             }
             orderViewModel.FormOrder.FinishTime = DateTime.Now;
             await orderViewModel.UpdateOrder(new Order().CopyFrom(orderViewModel.FormOrder));
-            OrderListView.SelectedItem = null;
         }
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -64,6 +63,7 @@ namespace PizzaPalace.View
             await orderViewModel.DeleteOrder(new Order().CopyFrom(orderViewModel.FormOrder));
             orderViewModel.FormOrder.SetDefaults();
             OrderListView.SelectedItem = null;
+            this.orderViewModel.FormOrder.NotifyTotalCost();
         }
 
         private void OrderListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,17 +71,18 @@ namespace PizzaPalace.View
             if (e.AddedItems.Count > 0)
             {
                 var order = (sender as ListView).SelectedItem as Order;
-                orderViewModel.FormOrder.CopyFrom(order);
-                orderViewModel.FormOrder.Items.Clear();
+                this.orderViewModel.FormOrder.CopyFrom(order);
+                this.orderViewModel.FormOrder.Items.Clear();
                 foreach (var item in order.Items)
                 {
-                    orderViewModel.FormOrder.Items.Add(item);
+                    this.orderViewModel.FormOrder.Items.Add(item);
                 }
             }
             else
             {
-                orderViewModel.FormOrder.SetDefaults();
+                this.orderViewModel.FormOrder.SetDefaults();
             }
+            this.orderViewModel.FormOrder.NotifyTotalCost();
         }
     }
 }

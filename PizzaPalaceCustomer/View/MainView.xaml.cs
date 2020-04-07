@@ -69,9 +69,9 @@ namespace PizzaPalace.View
                             await this.orderViewModel.FetchOrder(this.orderViewModel.FormOrder.OrderID);
                             if (this.orderViewModel.FormOrder.FinishTime != null)
                             {
-                                await this.DisplayOrderReadyDialog();
                                 this.orderViewModel.FormOrder.SetDefaults();
                                 this.orderViewModel.FormOrder.NotifyTotalCost();
+                                await this.DisplayOrderReadyDialog();
                             }
                         });
                         Thread.Sleep(1000);
