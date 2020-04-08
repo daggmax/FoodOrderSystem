@@ -26,7 +26,26 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid))); 
             }
         }
+        public bool Exists { get { return this.CategoryID > 0; } }
 
+        public bool IsValid
+        {
+            get
+            {
+                if (!(this.CategoryID >= 0))
+                {
+                    return false;
+                }
+                if (!(this.Name.Length > 0))
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
         public void SetDefaults()
         {
             this.CategoryID = 0;
@@ -43,24 +62,5 @@ namespace PizzaPalace.Model
         {
             return this.Name;
         }
-        public bool IsValid
-        {
-            get
-            {
-                if (!(this.CategoryID >= 0))
-                {
-                    return false;
-                }
-                if (!(this.Name.Length > 0))
-                {
-                    return false;
-                }
-                return true;
-            }
-        }
-        public bool Exists { get { return this.CategoryID > 0; } }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
