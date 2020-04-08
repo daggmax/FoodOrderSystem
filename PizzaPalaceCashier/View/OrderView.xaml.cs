@@ -24,6 +24,7 @@ namespace PizzaPalace.View
         public OrderView()
         {
             this.InitializeComponent();
+            //Fetches from backend while page is active
             Task.Run(async () =>
             {
                 await this.categoryViewModel.FetchCategories();

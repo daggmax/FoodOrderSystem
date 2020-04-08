@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Media;
 
 namespace PizzaPalace.View
 {
+    /// <summary>
+    /// Dismissing current ContentDialog if active
+    /// </summary>
     internal static class ContentDialogMaker
     {
         public static async void CreateContentDialog(ContentDialog Dialog, bool awaitPreviousDialog) { await CreateDialog(Dialog, awaitPreviousDialog); }
@@ -50,9 +53,11 @@ namespace PizzaPalace.View
         CategoryViewModel categoryViewModel = new CategoryViewModel();
         OrderViewModel orderViewModel = new OrderViewModel();
         private bool destroyed;
+
         public MainView()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();  
+            //Fetches from backend while page is active
             Task.Run(async () =>
             {
                 while (!this.destroyed)
@@ -84,12 +89,15 @@ namespace PizzaPalace.View
             });
             this.Unloaded += OnUnloaded;
         }
-
+        /// <summary>
+        /// Eliminates fetch task on unloaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
             this.destroyed = true;
         }
-
         public async Task DisplayOrderReadyDialog()
         {
             await ContentDialogMaker.CreateContentDialogAsync(new ContentDialog
@@ -116,7 +124,6 @@ namespace PizzaPalace.View
                 PrimaryButtonText = "OK"
             }, awaitPreviousDialog: false);
         }
-
         public async Task DisplayPleaseWaitDialog()
         {
             await ContentDialogMaker.CreateContentDialogAsync(new ContentDialog
@@ -130,7 +137,6 @@ namespace PizzaPalace.View
                 PrimaryButtonText = "OK"
             }, awaitPreviousDialog: false);
         }
-
         private void ItemGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID == 0 && ItemGridView.SelectedItem != null)
@@ -140,7 +146,6 @@ namespace PizzaPalace.View
             }
             ItemGridView.SelectedItem = null;
         }
-
         private async void PlusButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID > 0)
@@ -168,7 +173,6 @@ namespace PizzaPalace.View
             }
             this.orderViewModel.FormOrder.NotifyTotalCost();
         }
-
         private async void ClearCartButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID > 0)
@@ -194,7 +198,11 @@ namespace PizzaPalace.View
             this.orderViewModel.FormOrder.NotifyTotalCost();
             await DisplayOrderPlacedDialog();
         }
-
+        /// <summary>
+        /// Needed for manipulating Amount
+        /// </summary>
+        /// <param name="originalSource"></param>
+        /// <returns></returns>
         public int GetIndexFromListViewByOriginalSource(object originalSource)
         {
             DependencyObject dependencyObject = (DependencyObject)originalSource;

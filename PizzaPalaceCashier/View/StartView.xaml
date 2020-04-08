@@ -8,14 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="LayoutRoot"
-            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <NavigationView x:Name="NavView"
+    <Grid>
+        <NavigationView x:Name="NavigationView"
                         OpenPaneLength="160"
                         AlwaysShowHeader="False"
                         IsSettingsVisible="False"
                         PaneDisplayMode="Left"
-                        BackRequested="NavView_BackRequested"
+                        BackRequested="NavigationView_BackRequested"
                         ItemInvoked="NavigationView_ItemInvoked"
                         IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}">
             <NavigationView.MenuItems>
@@ -33,11 +32,9 @@
                                     Icon="Pin"/>
             </NavigationView.MenuItems>
 
-            <!-- In OnNavigatingToPage, we synchronize the selected item in the NavigationView with the current page. -->
-            <Frame
-            x:Name="frame"
-            Margin="20,0,0,0"
-            Navigating="OnNavigatingToPage">
+            <Frame x:Name="frame"
+                   Margin="20,0,0,0"
+                   Navigating="OnNavigatingToPage">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>

@@ -10,6 +10,7 @@ namespace PizzaPalace.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private int itemID;
         public int ItemID
         {
             get { return this.itemID; }
@@ -21,7 +22,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
-        private int itemID;
+        private int categoryID;
         public int CategoryID
         {
             get { return this.categoryID; }
@@ -32,7 +33,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
-        private int categoryID;
+        private string name;
         public string Name
         {
             get { return this.name; }
@@ -43,7 +44,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
-        private string name;
+        private string description;
         public string Description
         {
             get { return this.description; }
@@ -53,7 +54,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Description)));
             }
         }
-        private string description;
+        private float price;
         public float Price
         {
             get { return this.price; }
@@ -64,7 +65,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
             }
         }
-        private float price;
+        private string imageURL;
         public string ImageURL 
         { 
             get { return imageURL; } 
@@ -74,7 +75,17 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ImageURL)));
             }
         }
-        private string imageURL;
+        private Category category;
+        public Category Category
+        {
+            get { return this.category; }
+            set
+            {
+                this.category = value;
+                this.CategoryID = this.category != null ? this.category.CategoryID : 0;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
+            }
+        }
         public bool Exists { get { return this.ItemID > 0; } }
         public bool IsValid
         {
@@ -99,18 +110,6 @@ namespace PizzaPalace.Model
                 return true;
             }
         }
-        public Category Category
-        {
-            get { return this.category; }
-            set
-            {
-                this.category = value;
-                this.CategoryID = this.category != null ? this.category.CategoryID : 0;
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
-            }
-        }
-        private Category category;
-
         public void SetDefaults()
         {
             this.ItemID = 0;

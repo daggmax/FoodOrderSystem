@@ -25,8 +25,7 @@ namespace PizzaPalace.ViewModel
                 {
                     this.Categories.RemoveAt(i--);
                 }
-            }
-            
+            }           
             foreach (var category in categories)
             {
                 if (this.Categories.FirstOrDefault(c => c.CategoryID == category.CategoryID) == null)

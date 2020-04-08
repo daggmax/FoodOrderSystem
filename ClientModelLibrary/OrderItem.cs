@@ -8,6 +8,7 @@ namespace PizzaPalace.Model
 {
     public class OrderItem : INotifyPropertyChanged
     {
+        private int orderID;
         public int OrderID
         {
             get { return this.orderID; }
@@ -17,7 +18,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OrderID))); 
             }
         }
-        private int orderID;
+        private int itemID;
         public int ItemID
         {
             get { return this.itemID; }
@@ -27,7 +28,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OrderID))); 
             }
         }
-        private int itemID;
+        private float price;
         public float Price
         {
             get { return this.price; }
@@ -37,7 +38,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Price)));
             }
         }
-        private float price;
+        private int amount;
         public int Amount
         {
             get { return this.amount; }
@@ -47,7 +48,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Amount)));
             }
         }
-        private int amount;
+        private Item item;
         public Item Item
         {
             get { return this.item; }
@@ -57,8 +58,6 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Item)));
             }
         }
-        private Item item;
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

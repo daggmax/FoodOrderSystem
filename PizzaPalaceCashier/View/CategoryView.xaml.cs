@@ -21,6 +21,7 @@ namespace PizzaPalace.View
         public CategoryView()
         {
             this.InitializeComponent();
+            //Fetches from backend while page is active
             Task.Run(async () => {
                 while (!destroyed)
                 {

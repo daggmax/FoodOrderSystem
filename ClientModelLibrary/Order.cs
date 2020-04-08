@@ -10,6 +10,7 @@ namespace PizzaPalace.Model
 {
     public class Order : INotifyPropertyChanged
     {
+        private int orderID;
         public int OrderID
         {
             get { return this.orderID; }
@@ -19,7 +20,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OrderID)));
             }
         }
-        private int orderID;
+        private DateTime? orderTime;
         public DateTime? OrderTime
         {
             get { return this.orderTime; }
@@ -30,7 +31,7 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InProgress)));
             }
         }
-        private DateTime? orderTime;
+        private DateTime? finishTime;
         public DateTime? FinishTime
         {
             get { return this.finishTime; }
@@ -41,7 +42,6 @@ namespace PizzaPalace.Model
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InProgress)));
             }
         }
-        private DateTime? finishTime;
         public float TotalCost
         {
             get
@@ -54,7 +54,6 @@ namespace PizzaPalace.Model
                 return total;
             }
         }
-
         public bool InProgress
         {
             get
@@ -88,7 +87,6 @@ namespace PizzaPalace.Model
             }
             return this;
         }
-
         public OrderItem AddItem(Item item)
         {
             var orderItem = this.Items.FirstOrDefault(i => i.Item == item);
@@ -124,7 +122,6 @@ namespace PizzaPalace.Model
             }
             return true;
         }
-
         public void NotifyTotalCost()
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalCost)));

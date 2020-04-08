@@ -22,36 +22,45 @@ namespace PizzaPalace.View
     /// </summary>
     public sealed partial class StartView : Page
     {
-        public StartView()
-        {
-            this.InitializeComponent();
-        }
         public readonly string OrdersListLabel = "Orders";
         public readonly string ItemsListLabel = "Items";
         public readonly string CategoriesListLabel = "Categories";
         public Frame AppFrame => frame;
-
+        public StartView()
+        {
+            this.InitializeComponent();
+        }
+        /// <summary>
+        /// Handles selection in navigation view when GoBack() is requested.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
         {
             if (e.NavigationMode == NavigationMode.Back)
             {
                 if (e.SourcePageType == typeof(OrderView))
                 {
-                    NavView.SelectedItem = OrdersMenuItem;
+                    this.NavigationView.SelectedItem = OrdersMenuItem;
                     frame.Navigate(typeof(OrderView));
                 }
                 else if (e.SourcePageType == typeof(ItemView))
                 {
-                    NavView.SelectedItem = ItemsMenuItem;
+                    this.NavigationView.SelectedItem = ItemsMenuItem;
                     frame.Navigate(typeof(ItemView));
                 }
                 else if (e.SourcePageType == typeof(CategoryView))
                 {
-                    NavView.SelectedItem = CategoriesMenuItem;
+                    this.NavigationView.SelectedItem = CategoriesMenuItem;
                     frame.Navigate(typeof(CategoryView));
                 }
             }
         }
+        /// <summary>
+        /// Handles navigation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var label = args.InvokedItem as string;
@@ -64,7 +73,12 @@ namespace PizzaPalace.View
                 AppFrame.Navigate(pageType);
             }
         }
-        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        /// <summary>
+        /// Returns user to most recent page if possible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void NavigationView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             if (AppFrame.CanGoBack)
             {
