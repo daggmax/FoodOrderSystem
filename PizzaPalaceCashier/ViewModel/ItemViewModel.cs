@@ -17,7 +17,11 @@ namespace PizzaPalace.ViewModel
 
         public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
         public Item FormItem { get; set; } = new Item();
-
+        /// <summary>
+        /// Adds an item in backend and frontend.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task<Item> AddItem(Item item)
         {
             HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(item));
@@ -27,7 +31,11 @@ namespace PizzaPalace.ViewModel
             this.Items.Add(item);
             return item;
         }
-
+        /// <summary>
+        /// Updates item in backend and frontend.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task UpdateItem(Item item)
         {
             HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(item));
@@ -43,7 +51,11 @@ namespace PizzaPalace.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Gets items from backend. Updates list in frontend if changes occured in backend.
+        /// </summary>
+        /// <param name="categories"></param>
+        /// <returns></returns>
         public async Task FetchItems(ObservableCollection<Category> categories)
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);
@@ -55,7 +67,6 @@ namespace PizzaPalace.ViewModel
                     this.Items.RemoveAt(i--);
                 }
             }
-
             foreach (var item in items)
             {
                 item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();
@@ -73,7 +84,11 @@ namespace PizzaPalace.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Deletes item in backend and frontend.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task DeleteItem(Item item)
         {
             await this.httpClient.DeleteAsync(URL + "/" + ControllerName + "/" + item.ItemID);

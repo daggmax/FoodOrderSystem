@@ -34,12 +34,20 @@ namespace PizzaPalace.View
             });
             this.Unloaded += CategoryView_Unloaded;
         }
-
+        /// <summary>
+        /// Disables server call when page is not active.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CategoryView_Unloaded(object sender, RoutedEventArgs e)
         {
             destroyed = true;
         }
-
+        /// <summary>
+        /// Saves category if valid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             this.Focus(FocusState.Programmatic); // To unfocus form controls allowing notify to fire text changed
@@ -61,17 +69,21 @@ namespace PizzaPalace.View
                 categoryViewModel.FormCategory.SetDefaults();
             }
         }
-
+        /// <summary>
+        /// Deletes category in backend, sets default values on FormCategory in frontend
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await categoryViewModel.DeleteCategory(new Category().CopyFrom(categoryViewModel.FormCategory));
             categoryViewModel.FormCategory.SetDefaults();
         }
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.GoBack();
-        }
-
+        /// <summary>
+        /// Used for selecting and storing a category object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CategoryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(e.AddedItems.Count > 0)

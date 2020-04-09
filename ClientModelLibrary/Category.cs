@@ -43,15 +43,20 @@ namespace PizzaPalace.Model
                 return true;
             }
         }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Set default values to this object.
+        /// </summary>
         public void SetDefaults()
         {
             this.CategoryID = 0;
             this.Name = "";
         }
-
+        /// <summary>
+        /// Updates this object to match parameter.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public Category CopyFrom(Category category)
         {
             this.CategoryID = category.CategoryID;

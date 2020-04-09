@@ -17,7 +17,11 @@ namespace PizzaPalace.ViewModel
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
         public Category FormCategory { get; set; } = new Category();
-
+        /// <summary>
+        /// Adds a category in backend and frontend.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public async Task<Category> AddCategory(Category category)
         {
             HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(category));
@@ -27,7 +31,11 @@ namespace PizzaPalace.ViewModel
             this.Categories.Add(category);
             return category;
         }
-
+        /// <summary>
+        /// Updates category in backend and frontend.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public async Task UpdateCategory(Category category)
         {
             HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(category));
@@ -43,7 +51,10 @@ namespace PizzaPalace.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Gets categories from backend. Updates list in frontend if changes occured in backend. 
+        /// </summary>
+        /// <returns></returns>
         public async Task FetchCategories()
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);
@@ -64,7 +75,11 @@ namespace PizzaPalace.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Deletes category in backend and frontend.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public async Task DeleteCategory(Category category)
         {
             await this.httpClient.DeleteAsync(URL + "/" + ControllerName + "/" + category.CategoryID);

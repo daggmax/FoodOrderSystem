@@ -14,7 +14,11 @@ namespace PizzaPalace.ViewModel
         private const string ControllerName = "Items";
 
         public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
-
+        /// <summary>
+        /// Gets items from backend. Updates list in frontend if changes occured in backend.
+        /// </summary>
+        /// <param name="categories"></param>
+        /// <returns></returns>
         public async Task FetchItems(ObservableCollection<Category> categories)
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);
@@ -26,7 +30,6 @@ namespace PizzaPalace.ViewModel
                     this.Items.RemoveAt(i--);
                 }
             }
-
             foreach (var item in items)
             {
                 item.Category = categories.Where(c => c.CategoryID == item.CategoryID).FirstOrDefault();

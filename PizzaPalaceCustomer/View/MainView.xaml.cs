@@ -17,7 +17,6 @@ namespace PizzaPalace.View
     /// </summary>
     internal static class ContentDialogMaker
     {
-        public static async void CreateContentDialog(ContentDialog Dialog, bool awaitPreviousDialog) { await CreateDialog(Dialog, awaitPreviousDialog); }
         public static async Task CreateContentDialogAsync(ContentDialog Dialog, bool awaitPreviousDialog) { await CreateDialog(Dialog, awaitPreviousDialog); }
 
         static async Task CreateDialog(ContentDialog Dialog, bool awaitPreviousDialog)
@@ -57,7 +56,7 @@ namespace PizzaPalace.View
         public MainView()
         {
             this.InitializeComponent();  
-            //Fetches from backend while page is active
+            //While page is active, regularly check for updates.
             Task.Run(async () =>
             {
                 while (!this.destroyed)
@@ -90,7 +89,7 @@ namespace PizzaPalace.View
             this.Unloaded += OnUnloaded;
         }
         /// <summary>
-        /// Eliminates fetch task on unloaded
+        /// Eliminates fetch task on unloaded.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -98,6 +97,10 @@ namespace PizzaPalace.View
         {
             this.destroyed = true;
         }
+        /// <summary>
+        /// Displays a ContentDialog.
+        /// </summary>
+        /// <returns></returns>
         public async Task DisplayOrderReadyDialog()
         {
             await ContentDialogMaker.CreateContentDialogAsync(new ContentDialog
@@ -111,6 +114,10 @@ namespace PizzaPalace.View
                 PrimaryButtonText = "OK"
             }, awaitPreviousDialog: false);
         }
+        /// <summary>
+        /// Displays a ContentDialog.
+        /// </summary>
+        /// <returns></returns>
         public async Task DisplayOrderPlacedDialog()
         {
             await ContentDialogMaker.CreateContentDialogAsync(new ContentDialog
@@ -124,6 +131,10 @@ namespace PizzaPalace.View
                 PrimaryButtonText = "OK"
             }, awaitPreviousDialog: false);
         }
+        /// <summary>
+        /// Displays a ContentDialog.
+        /// </summary>
+        /// <returns></returns>
         public async Task DisplayPleaseWaitDialog()
         {
             await ContentDialogMaker.CreateContentDialogAsync(new ContentDialog
@@ -137,6 +148,11 @@ namespace PizzaPalace.View
                 PrimaryButtonText = "OK"
             }, awaitPreviousDialog: false);
         }
+        /// <summary>
+        /// Used for selecting an item in ItemGridView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ItemGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID == 0 && ItemGridView.SelectedItem != null)
@@ -146,6 +162,11 @@ namespace PizzaPalace.View
             }
             ItemGridView.SelectedItem = null;
         }
+        /// <summary>
+        /// ++ to amount if order is not placed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PlusButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID > 0)
@@ -158,6 +179,11 @@ namespace PizzaPalace.View
             this.orderViewModel.FormOrder.NotifyTotalCost();
             
         }
+        /// <summary>
+        /// ++ to amount if order is not placed. Removes object if amount <= 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void MinusButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID > 0)
@@ -173,6 +199,11 @@ namespace PizzaPalace.View
             }
             this.orderViewModel.FormOrder.NotifyTotalCost();
         }
+        /// <summary>
+        /// Clears cart on click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ClearCartButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID > 0)
@@ -183,6 +214,11 @@ namespace PizzaPalace.View
             this.orderViewModel.FormOrder.Items.Clear();
             this.orderViewModel.FormOrder.NotifyTotalCost();
         }
+        /// <summary>
+        /// Calls post method if order is valid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.orderViewModel.FormOrder.OrderID > 0)
@@ -199,7 +235,7 @@ namespace PizzaPalace.View
             await DisplayOrderPlacedDialog();
         }
         /// <summary>
-        /// Needed for manipulating Amount
+        /// Needed for manipulating Amount. Gets parent of object until it is ListViewItem, returns index from containter.
         /// </summary>
         /// <param name="originalSource"></param>
         /// <returns></returns>

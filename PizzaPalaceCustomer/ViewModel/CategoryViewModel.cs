@@ -14,7 +14,10 @@ namespace PizzaPalace.ViewModel
         private const string ControllerName = "Categories";
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
-        
+        /// <summary>
+        /// Gets categories from backend. Updates list in frontend if changes occured in backend. 
+        /// </summary>
+        /// <returns></returns>
         public async Task FetchCategories()
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);

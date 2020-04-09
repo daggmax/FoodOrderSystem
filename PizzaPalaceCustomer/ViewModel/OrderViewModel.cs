@@ -13,7 +13,11 @@ namespace PizzaPalace.ViewModel
         private const string ControllerName = "Orders";
         HttpClient httpClient = new HttpClient();
         public Order FormOrder { get; set; } = new Order();
-
+        /// <summary>
+        /// Posts order to backend.
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task<Order> AddOrder(Order order)
         {
             //POST in Orders
@@ -32,7 +36,11 @@ namespace PizzaPalace.ViewModel
             }
             return order;
         }
-
+        /// <summary>
+        /// Gets specific order from backend based on parameter.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         public async Task FetchOrder(int id)
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName + "/" + id);

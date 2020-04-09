@@ -17,7 +17,11 @@ namespace PizzaPalace.ViewModel
 
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
         public Order FormOrder { get; set; } = new Order();
-
+        /// <summary>
+        /// Adds an order in backend and frontend.
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task UpdateOrder(Order order)
         {
             HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(order));
@@ -33,7 +37,11 @@ namespace PizzaPalace.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Gets orders from backend. Updates list in frontend if changes occured in backend.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         public async Task FetchOrders(ObservableCollection<Item> items)
         {
             var response = await this.httpClient.GetAsync(URL + "/" + ControllerName);
@@ -74,7 +82,11 @@ namespace PizzaPalace.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Deletes order in backend and frontend.
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task DeleteOrder(Order order)
         {
             await this.httpClient.DeleteAsync(URL + "/" + ControllerName + "/" + order.OrderID);

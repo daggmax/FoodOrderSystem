@@ -114,6 +114,9 @@ namespace PizzaPalace.Model
         {
             get => this.Price + " SEK";
         }
+        /// <summary>
+        /// Set default values to this object.
+        /// </summary>
         public void SetDefaults()
         {
             this.ItemID = 0;
@@ -123,6 +126,11 @@ namespace PizzaPalace.Model
             this.Price = 0;
             this.ImageURL = "";
         }
+        /// <summary>
+        /// Updates this object to match parameter.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public Item CopyFrom(Item item)
         {
             this.ItemID = item.ItemID;
@@ -134,6 +142,11 @@ namespace PizzaPalace.Model
             this.ImageURL = item.ImageURL;
             return this;
         }
+        /// <summary>
+        /// Compares all fields between this and parameter.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool FieldEquals(Item item)
         {
             if (this.ItemID != item.ItemID)

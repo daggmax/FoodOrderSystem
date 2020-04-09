@@ -40,12 +40,20 @@ namespace PizzaPalace.View
             });
             this.Unloaded += OrderView_Unloaded;
         }
-
+        /// <summary>
+        /// Eliminates fetch task on unloaded.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderView_Unloaded(object sender, RoutedEventArgs e)
         {
             this.destroyed = true;
         }
-
+        /// <summary>
+        /// Saves if order is valid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             this.Focus(FocusState.Programmatic); // To unfocus form controls allowing notify to fire text changed
@@ -58,7 +66,11 @@ namespace PizzaPalace.View
             orderViewModel.FormOrder.FinishTime = DateTime.Now;
             await orderViewModel.UpdateOrder(new Order().CopyFrom(orderViewModel.FormOrder));
         }
-
+        /// <summary>
+        /// Deletes order in backend, sets default values on FormOrder in frontend.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             await orderViewModel.DeleteOrder(new Order().CopyFrom(orderViewModel.FormOrder));
@@ -66,7 +78,11 @@ namespace PizzaPalace.View
             OrderListView.SelectedItem = null;
             this.orderViewModel.FormOrder.NotifyTotalCost();
         }
-
+        /// <summary>
+        /// Handles selection and displaying items in GUI.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)

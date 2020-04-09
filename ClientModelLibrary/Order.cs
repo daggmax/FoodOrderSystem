@@ -64,7 +64,9 @@ namespace PizzaPalace.Model
         public ObservableCollection<OrderItem> Items { get; set; } = new ObservableCollection<OrderItem>();
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        /// <summary>
+        /// Set default values to this object.
+        /// </summary>
         public void SetDefaults()
         {
             this.OrderID = 0;
@@ -72,6 +74,11 @@ namespace PizzaPalace.Model
             this.FinishTime = null;
             this.Items.Clear();
         }
+        /// <summary>
+        /// Updates this object to match parameter.
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public Order CopyFrom(Order order)
         {
             this.OrderID = order.OrderID;
@@ -87,6 +94,11 @@ namespace PizzaPalace.Model
             }
             return this;
         }
+        /// <summary>
+        /// Adds OrderItem to this list.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public OrderItem AddItem(Item item)
         {
             var orderItem = this.Items.FirstOrDefault(i => i.Item == item);
@@ -106,6 +118,11 @@ namespace PizzaPalace.Model
             this.Items.Add(orderItem);
             return orderItem;
         }
+        /// <summary>
+        /// Compares all fields between this and parameter.
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public bool FieldEquals(Order order)
         {
             if (this.OrderID != order.OrderID)
@@ -122,6 +139,9 @@ namespace PizzaPalace.Model
             }
             return true;
         }
+        /// <summary>
+        /// Used for notifing GUI to update property.
+        /// </summary>
         public void NotifyTotalCost()
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TotalCost)));
