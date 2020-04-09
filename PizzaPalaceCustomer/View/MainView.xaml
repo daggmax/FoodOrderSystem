@@ -12,21 +12,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         
         <TextBlock Text="Item"
@@ -34,8 +26,7 @@
         <GridView x:Name="ItemGridView"
                   ItemsSource="{x:Bind itemViewModel.Items}"
                   Grid.Row="1"
-                  Grid.ColumnSpan ="5"
-                  Grid.RowSpan="6"
+                  Grid.RowSpan="3"
                   SelectionMode="Single"
                   SelectionChanged="ItemGridView_SelectionChanged">
             <GridView.ItemTemplate>
@@ -59,17 +50,23 @@
                                        Margin="4,4,0,4"
                                        Style="{ThemeResource BaseTextBlockStyle}" 
                                        HorizontalAlignment="Center"/>
+                        <TextBlock Text="{x:Bind GetPriceToSEK, Mode=OneWay}" 
+                                       Margin="4,4,0,4"
+                                       FontSize="12"
+                                       Style="{ThemeResource BodyTextBlockStyle}" 
+                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                       HorizontalAlignment="Center"/>
                         <TextBlock Text="{x:Bind Category, Mode=OneWay}" 
                                        Style="{ThemeResource BodyTextBlockStyle}" 
                                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                        Margin="4,4,0,4"
                                        FontSize="12"
                                        HorizontalAlignment="Center"/>
-                        <TextBlock Text="{x:Bind Price, Mode=OneWay}" 
-                                       Margin="4,4,0,4"
-                                       FontSize="12"
+                        <TextBlock Text="{x:Bind Description, Mode=OneWay}" 
                                        Style="{ThemeResource BodyTextBlockStyle}" 
                                        Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                       Margin="4,4,0,4"
+                                       FontSize="12"
                                        HorizontalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
@@ -82,9 +79,7 @@
                   ItemsSource="{x:Bind orderViewModel.FormOrder.Items}" 
                   HorizontalAlignment="Stretch"
                   Grid.Row="1" 
-                  Grid.Column="6"
-                  Grid.ColumnSpan="2"
-                  Grid.RowSpan="4">
+                  Grid.Column="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:OrderItem">
                     <Grid>
@@ -95,7 +90,7 @@
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" Height="64">
+                        <StackPanel Orientation="Horizontal">
                             <Ellipse Height="48" Width="48" VerticalAlignment="Center">
                                 <Ellipse.Fill>
                                     <ImageBrush>
@@ -109,7 +104,13 @@
                                 <TextBlock Text="{x:Bind Item.Name, Mode=OneWay}" 
                                            Style="{ThemeResource BaseTextBlockStyle}" 
                                            Foreground="{ThemeResource SystemControlPageTextBaseHighBrush}" />
-                                <TextBlock Text="{x:Bind Price, Mode=OneWay}" 
+                                <TextBlock Text="{x:Bind Item.GetPriceToSEK, Mode=OneWay}" 
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                <TextBlock Text="{x:Bind Item.Category, Mode=OneWay}" 
+                                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                <TextBlock Text="{x:Bind Item.Description, Mode=OneWay}" 
                                            Style="{ThemeResource BodyTextBlockStyle}" 
                                            Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                             </StackPanel>
@@ -128,21 +129,13 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Border Grid.Row="1"
-                Grid.Column="5"
-                Grid.RowSpan="5"
-                BorderBrush="White"
-                BorderThickness="1"
-                Width="1"
-                HorizontalAlignment="Center"/>
-
         <TextBlock Text="Cart"
-                   Grid.Column="6"
+                   Grid.Column="3"
                    FontSize="50"/>
 
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="5"
-                    Grid.Column="6"
+                    Grid.Row="2"
+                    Grid.Column="3"
                     Grid.ColumnSpan="2">
             <TextBlock Text="Total Cost: "
                        FontSize="25"/>
@@ -158,16 +151,16 @@
 
         <Button x:Name="ClearCartButton" 
                 Content="Clear cart" 
-                Grid.Column="7" 
-                Grid.Row="6" 
+                Grid.Column="2" 
+                Grid.Row="3" 
                 HorizontalAlignment="Right"
                 Width="80"
                 Margin="20"
                 Click="ClearCartButton_Click"/>
         <Button x:Name="ContinueButton" 
                 Content="Continue" 
-                Grid.Column="6" 
-                Grid.Row="7" 
+                Grid.Column="1" 
+                Grid.Row="3" 
                 HorizontalAlignment="Left"
                 Width="150"
                 Margin="20"

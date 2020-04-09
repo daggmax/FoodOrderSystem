@@ -110,6 +110,10 @@ namespace PizzaPalace.Model
                 return true;
             }
         }
+        public string GetPriceToSEK
+        {
+            get => this.Price + " SEK";
+        }
         public void SetDefaults()
         {
             this.ItemID = 0;
